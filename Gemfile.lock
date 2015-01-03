@@ -1,7 +1,5 @@
-GIT
-  remote: git@github.com:attdevsupport/codekit-ruby.git
-  revision: 2afb6d52f31d58c53b053d8f41985221c857fbc0
-  ref: 2afb6d52f31d58c53b053d8f41985221c857fbc0
+PATH
+  remote: lib/codekit-ruby
   specs:
     att-codekit (4.3.2)
       immutable_struct
