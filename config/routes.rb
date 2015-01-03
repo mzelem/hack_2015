@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :devices do
+    member do
+      post :action
+    end
+  end
+
   resources :guests
 
   resources :messages
