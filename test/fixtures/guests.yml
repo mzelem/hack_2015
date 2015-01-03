@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone: MyString
+  token: MyString
+  check_in: 2015-01-03 12:55:11
+  checkout: 
+  bluetooth_id: MyString
+  preferred_language: MyString
+
+two:
+  name: MyString
+  phone: MyString
+  token: MyString
+  check_in: 2015-01-03 12:55:11
+  checkout: 
+  bluetooth_id: MyString
+  preferred_language: MyString

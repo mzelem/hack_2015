@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @guest.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @guest.phone %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @guest.token %>
+</p>
+
+<p>
+  <strong>Check in:</strong>
+  <%= @guest.check_in %>
+</p>
+
+<p>
+  <strong>Checkout:</strong>
+  <%= @guest.checkout %>
+</p>
+
+<p>
+  <strong>Bluetooth:</strong>
+  <%= @guest.bluetooth_id %>
+</p>
+
+<p>
+  <strong>Preferred language:</strong>
+  <%= @guest.preferred_language %>
+</p>
+
+<%= link_to 'Edit', edit_guest_path(@guest) %> |
+<%= link_to 'Back', guests_path %>

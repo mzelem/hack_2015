@@ -1,0 +1,2 @@
+echo "Using 2.0.0-p451@att_test"
+rvm --create use 2.0.0-p451@att_test
