@@ -1,19 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div id="alert alert-info" role="alert"><%= notice %></div>
 
-<p>
-  <strong>Login:</strong>
-  <%= @user.login %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Gateway:</strong>
-  <%= @user.gateway_id %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Login:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @user.login %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @user.password %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Gateway:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @user.gateway_id %></p>
+    </div>
+  </div>
+</form>
