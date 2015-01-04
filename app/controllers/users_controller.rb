@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user.password = user_params[:password]
 
     respond_to do |format|
-      if @user.save
+      if @user.authorize && @user.save
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully authenticated.' }
         format.json { render :show, status: :created, location: @user }

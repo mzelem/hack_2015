@@ -2,16 +2,13 @@ class User < ActiveRecord::Base
 
   has_many :devices
 
-  before_validation :authorize
-  before_save :load_devices
+  #before_save :authorize
+  after_save :load_devices
 
-  validates_presence_of :auth_token
   validates_presence_of :password
 
   def authorize
-    conn = DeviceConnection.new(self)
-
-    resp_json = conn.get_auth_token
+    resp_json = device_connection.get_auth_token
 
     self.auth_token = resp_json['content']['authToken']
     self.gateway_id = resp_json['content']['gateways'][0]['id']
@@ -22,9 +19,9 @@ class User < ActiveRecord::Base
   end
 
   def load_devices
-    conn = DeviceConnection.new(self)
+    devices_json = device_connection.get_devices['content'].select{|h| !!(h['deviceType'] =~ /door-lock|smart-plug/) }
 
-    conn.get_devices['content'].select{|h| !!(h['deviceType'] =~ /door-lock|smart-plug/) }.each do |d|
+    devices_json.each do |d|
       name = if d['deviceType'] == 'door-lock'
         'Front Door'
       else
@@ -35,5 +32,9 @@ class User < ActiveRecord::Base
       device.status = d["attributes"].select{|h| !!(h['label'] =~ /#{Device::ACTION_MAP[device.device_type].to_s}/) }.first["value"]
       device.save
     end
+  end
+
+  def device_connection
+    @device_conn ||= DeviceConnection.new(self)
   end
 end
