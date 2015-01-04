@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_user
+    
+      session["credentials"] = {"token"=>"TIVXJBRUXxwf7RTe7argow2c4Qbjb4xp", "refresh_token"=>"MStMWsDVd2ydIXaNMx3wAiXqfFpwarCm", "expires_at"=>1420425344, "expires"=>true}
     redirect_to login_path unless current_user.present?
   end
 end
