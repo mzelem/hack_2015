@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    @devices = current_user.devices.all
 
     # init device status
     if @devices.first.present? && @devices.first.status.blank?
