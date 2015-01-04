@@ -1,7 +1,5 @@
-GIT
-  remote: git@github.com:attdevsupport/codekit-ruby.git
-  revision: 2afb6d52f31d58c53b053d8f41985221c857fbc0
-  ref: 2afb6d52f31d58c53b053d8f41985221c857fbc0
+PATH
+  remote: lib/codekit-ruby
   specs:
     att-codekit (4.3.2)
       immutable_struct
@@ -104,6 +102,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mysql2 (0.3.17)
     netrc (0.10.2)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -209,9 +208,11 @@ DEPENDENCIES
   att-codekit!
   byebug
   coffee-rails (~> 4.1.0)
+  faraday
   jbuilder (~> 2.0)
   jquery-rails
   less-rails-bootstrap
+  mysql2
   omniauth
   omniauth-oauth2
   pry

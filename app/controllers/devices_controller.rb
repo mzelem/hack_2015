@@ -15,7 +15,11 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def action
-    render status: 204
+    if @device.perform_action(params[:action])
+      render status: 204
+    else
+      render status: 422
+    end
   end
 
   # GET /devices/new
