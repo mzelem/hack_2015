@@ -27,6 +27,7 @@ gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'pry'
 gem 'pry-nav'
+gem 'mysql2'
 
 gem 'att-codekit', path: 'lib/codekit-ruby' #git: 'git@github.com:attdevsupport/codekit-ruby.git', ref: '2afb6d52f31d58c53b053d8f41985221c857fbc0'
 

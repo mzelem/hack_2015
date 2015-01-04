@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  host: 198.11.234.66
+  port: 3307
+  username: uxjnL41bw9OBJ
+  password: p0wjXM719dHql
+  database: de99d3b83788b4f5bb65e0a736a8890d6
+
