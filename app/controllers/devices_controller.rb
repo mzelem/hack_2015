@@ -44,19 +44,18 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def action
-    content = 'asdf'
+    content = '-1'
     c = 0
 
-    while content.to_s != '-1' do
+    while content.to_s == '-1' do
       resp = @device.perform_action(params[:device_action])
       content = JSON.parse(resp.body)["content"]
-      puts content.to_s + '<==========================================='
       c += 1
-      content = -1 if c == 20
+      content = '1' if c == 2
     end
 
-    if content.to_s == '-1'
-      @device.get_status
+    if content.to_s != '-1'
+      @device.status = params[:device_action]
       @device.save
       render action: :show
     else
