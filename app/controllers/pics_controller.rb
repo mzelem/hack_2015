@@ -9,9 +9,6 @@ class PicsController < ApplicationController
   end
 
   def show
-    respond_with(@pic)
-
-
     send_data Base64.decode64(@pic.base_64), type: 'image/jpg', disposition: 'inline'
   end
 

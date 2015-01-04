@@ -65,7 +65,7 @@ class DevicesController < ApplicationController
 
         img = @camera_device.get_snapshot
 
-        pic = @camera_device.pics.create(base_64: @camera_device)
+        pic = @camera_device.pics.create(base_64: img)
 
         #fqdn = 'https://api.att.com'
 
