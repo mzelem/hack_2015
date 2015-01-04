@@ -31,7 +31,7 @@ class GuestsController < ApplicationController
       if @guest.save
 
         message = Message.new(to: @guest.phone, body: "Thank you for registering to be our guest on #{@guest.check_in}. Your key is: #{@guest.token}")
-        
+
         token = Att::Codekit::Auth::OAuthToken.new(session["credentials"]["token"], session["credentials"]["expires_at"], session["credentials"]["refresh_token"])
         message.send_message(token)
 
