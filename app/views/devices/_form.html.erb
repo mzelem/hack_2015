@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :device_type %><br>
-    <%= f.select :device_type, options_for_select([:door, :switch]) %>
+    <%= f.select :device_type, options_for_select(['door-lock', 'smart-plug']) %>
   </div>
   <div class="actions">
     <%= f.submit %>
