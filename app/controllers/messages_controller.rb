@@ -66,7 +66,6 @@ class MessagesController < ApplicationController
   private
     def authorize
       # TODO: cleanup
-      session["credentials"] = {"token"=>"TIVXJBRUXxwf7RTe7argow2c4Qbjb4xp", "refresh_token"=>"MStMWsDVd2ydIXaNMx3wAiXqfFpwarCm", "expires_at"=>1420425344, "expires"=>true}
       if session["credentials"].present? && session["credentials"]["access_token"].present?
         # we are authenticated
       else

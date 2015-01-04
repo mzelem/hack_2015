@@ -15,7 +15,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_oauth_session
-    session["credentials"] = {"token"=>"TIVXJBRUXxwf7RTe7argow2c4Qbjb4xp", "refresh_token"=>"MStMWsDVd2ydIXaNMx3wAiXqfFpwarCm", "expires_at"=>1420425344, "expires"=>true}
+    session["credentials"] = {"token"=>"ymoy6tLDf0CM1XFjWFS2c31vBTL3WzVz",
+                              "refresh_token"=>"gR7XYXm44sr4NwhPJSOzmO9vlzNppjA3",
+                              "expires_at"=>1420576819,
+                              "expires"=>true}
+
   end
 
   def authorize_user
