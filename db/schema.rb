@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103203559) do
+ActiveRecord::Schema.define(version: 20150104055712) do
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "devices", force: :cascade do |t|
     t.string   "name"
@@ -19,7 +35,11 @@ ActiveRecord::Schema.define(version: 20150103203559) do
     t.string   "device_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "status"
+    t.integer  "user_id"
   end
+
+  add_index "devices", ["user_id"], name: "index_devices_on_user_id"
 
   create_table "guests", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +60,16 @@ ActiveRecord::Schema.define(version: 20150103203559) do
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "login"
+    t.string   "password"
+    t.string   "gateway_id"
+    t.string   "auth_token"
+    t.string   "request_token"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

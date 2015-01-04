@@ -35,6 +35,8 @@ gem 'faraday'
 
 gem 'att-codekit', path: 'lib/codekit-ruby' #git: 'git@github.com:attdevsupport/codekit-ruby.git', ref: '2afb6d52f31d58c53b053d8f41985221c857fbc0'
 
+gem 'delayed_job_active_record'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

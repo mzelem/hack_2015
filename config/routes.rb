@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+
   resources :devices do
     member do
       post :action
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+  get '/login', to: 'users#new'
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
 

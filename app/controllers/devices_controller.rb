@@ -1,10 +1,18 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:show, :edit, :action, :update, :destroy]
 
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    @devices = current_user.devices.all
+
+    # init device status
+    if @devices.first.present? && @devices.first.status.blank?
+      @devices.each do |d|
+        d.get_status
+        d.save
+      end
+    end
   end
 
   # GET /devices/1
@@ -15,8 +23,11 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def action
-    if @device.perform_action(params[:action])
-      render status: 204
+    if @device.perform_action(params[:device_action])
+      @device.get_status
+      @device.save
+
+      render action: :show
     else
       render status: 422
     end
