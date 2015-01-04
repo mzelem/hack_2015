@@ -61,15 +61,24 @@ class DeviceConnection
   end
 
   def get_devices
-    @resp_json ||= JSON.parse(att_connection.get("/penguin/api/#{self.gateway_id}/devices").body)
+    resp_json ||= JSON.parse(att_connection.get("/penguin/api/#{self.gateway_id}/devices").body)
   end
 
   def perform_action(action,device)
     @resp_json = nil
-    att_connection.post do |req|
+    resp = att_connection.post do |req|
       req.url "/penguin/api/#{self.gateway_id}/devices/#{get_device_guid(device)}/#{Device::ACTION_MAP[device.device_type].to_s}"
       req.headers['Content-Type'] = 'application/json'
       req.body = action
+    end
+    resp
+  end
+
+  def get_snapshot(device)
+    @resp_json = nil
+    att_connection.get do |req|
+      req.url "/penguin/api/#{self.gateway_id}/snapshot/#{get_device_guid(device)}"
+      req.headers['Content-Type'] = 'application/json'
     end
   end
 end

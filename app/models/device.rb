@@ -16,8 +16,14 @@ class Device < ActiveRecord::Base
     device_connection.perform_action(action, self)
   end
 
+  def get_snapshot
+    resp = device_connection.get_snapshot(self)
+    JSON.parse(resp.body)['content']['encodedImage']
+  end
+
   def get_status
     self.status = device_connection.get_device_status(self)
+    puts self.status + '<----------------------------------------------------------------'
   end
 
   def device_connection

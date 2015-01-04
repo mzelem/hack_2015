@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.authorize && @user.save
+        @user.touch
         session[:user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was successfully authenticated.' }
         format.json { render :show, status: :created, location: @user }

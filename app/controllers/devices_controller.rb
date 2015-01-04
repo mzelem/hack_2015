@@ -18,18 +18,30 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def show
+    img = @device.get_snapshot
+    send_data Base64.decode64(img), type: 'image/jpg', disposition: 'inline'
   end
 
   # GET /devices/1
   # GET /devices/1.json
   def action
-    if @device.perform_action(params[:device_action])
+    content = 'asdf'
+    c = 0
+
+    while content.to_s != '-1' do
+      resp = @device.perform_action(params[:device_action])
+      content = JSON.parse(resp.body)["content"]
+      puts content.to_s + '<==========================================='
+      c += 1
+      content = -1 if c == 10
+    end
+
+    if content.to_s == '-1'
       @device.get_status
       @device.save
-
       render action: :show
     else
-      render status: 422
+      render status: 422, json: {}
     end
   end
 
