@@ -1,31 +1,53 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class=""><%= notice %></p>
 
 <h1>Listing Devices</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Beacon</th>
-      <th>Device type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col-xs-12">
+    <!-- PAGE CONTENT BEGINS -->
+    <div class="row">
+      <div class="col-xs-12">
+        <table id="simple-table" class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Beacon</th>
+              <th>Device type</th>
+              <th>Status</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @devices.each do |device| %>
-      <tr>
-        <td><%= device.name %></td>
-        <td><%= device.beacon_id %></td>
-        <td><%= device.device_type %></td>
-        <td><%= link_to 'Show', device %></td>
-        <td><%= link_to 'Edit', edit_device_path(device) %></td>
-        <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @devices.each do |device| %>
+              <tr>
+                <td><%= device.name %></td>
+                <td><%= device.beacon_id %></td>
+                <td><%= device.device_type %></td>
+                <td>
+                  <span class="label label-sm label-success">ON</span>
+                </td>
 
-<br>
+                <td>
+                  <div class="btn-group">
 
-<%= link_to 'New Device', new_device_path %>
+                      <%= link_to ' Show', device, class: 'btn btn-xs btn-info glyphicon glyphicon-eye-open' %>
+
+                      <%= link_to ' Edit', edit_device_path(device), class: 'btn btn-xs btn-warning glyphicon glyphicon-pencil' %>
+                    
+                      <%= link_to ' Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger glyphicon glyphicon-trash' %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div><!-- /.span -->
+    </div><!-- /.row -->
+
+    <div class="hr hr-18 dotted hr-double"></div>
+    <!-- PAGE CONTENT ENDS -->
+  </div><!-- /.col -->
+</div>
+
+<%= link_to 'New Device', new_device_path, class: 'btn btn-primary' %>

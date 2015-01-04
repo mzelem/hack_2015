@@ -2,38 +2,60 @@
 
 <h1>Listing Guests</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Token</th>
-      <th>Check in</th>
-      <th>Checkout</th>
-      <th>Bluetooth</th>
-      <th>Preferred language</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col-xs-12">
+    <!-- PAGE CONTENT BEGINS -->
+    <div class="row">
+      <div class="col-xs-12">
+        <table id="simple-table" class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Token</th>
+              <th>Check in</th>
+              <th>Checkout</th>
+              <th>Bluetooth</th>
+              <th>Preferred language</th>
+              <th>Status</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @guests.each do |guest| %>
-      <tr>
-        <td><%= guest.name %></td>
-        <td><%= guest.phone %></td>
-        <td><%= guest.token %></td>
-        <td><%= guest.check_in %></td>
-        <td><%= guest.checkout %></td>
-        <td><%= guest.bluetooth_id %></td>
-        <td><%= guest.preferred_language %></td>
-        <td><%= link_to 'Show', guest %></td>
-        <td><%= link_to 'Edit', edit_guest_path(guest) %></td>
-        <td><%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @guests.each do |guest| %>
+              <tr>
+                <td><%= guest.name %></td>
+                <td><%= guest.phone %></td>
+                <td><%= guest.token %></td>
+                <td><%= guest.check_in %></td>
+                <td><%= guest.checkout %></td>
+                <td><%= guest.bluetooth_id %></td>
+                <td><%= guest.preferred_language %></td>
+                <td>
+                  <span class="label label-sm label-success">ON</span>
+                </td>
 
-<br>
+                <td>
+                  <div class="btn-group">
 
-<%= link_to 'New Guest', new_guest_path %>
+                      <%= link_to ' Show', guest, class: 'btn btn-xs btn-info glyphicon glyphicon-eye-open' %>
+
+                      <%= link_to ' Edit', edit_guest_path(guest), class: 'btn btn-xs btn-warning glyphicon glyphicon-pencil' %>
+                    
+                      <%= link_to ' Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger glyphicon glyphicon-trash' %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div><!-- /.span -->
+    </div><!-- /.row -->
+
+    <div class="hr hr-18 dotted hr-double"></div>
+    <!-- PAGE CONTENT ENDS -->
+  </div><!-- /.col -->
+</div>
+
+<%= link_to 'New Guest', new_guest_path, class: 'btn btn-primary' %>

@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<p id="notice alert alert-info"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @device.name %>
-</p>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @device.name %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Beacon:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @device.beacon_id %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Device type:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @device.device_type %></p>
+    </div>
+  </div>
+</form>
 
-<p>
-  <strong>Beacon:</strong>
-  <%= @device.beacon_id %>
-</p>
-
-<p>
-  <strong>Device type:</strong>
-  <%= @device.device_type %>
-</p>
-
-<p>
-  <strong>Device status:</strong>
-  <%= @device.status %>
-</p>
-
-<%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', devices_path %>
+<%= link_to ' Edit', edit_device_path(@device), class: 'pull-right btn btn-warning glyphicon glyphicon-pencil' %>
+<%= link_to ' Back', devices_path, class: 'pull-left btn btn-default glyphicon glyphicon-arrow-left' %>
