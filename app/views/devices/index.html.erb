@@ -1,4 +1,4 @@
-<p id="notice" class="alert alert-success"><%= notice %></p>
+<p id="notice" class=""><%= notice %></p>
 
 <h1>Listing Devices</h1>
 
@@ -31,11 +31,11 @@
                 <td>
                   <div class="btn-group">
 
-                      <%= link_to 'Show', device, class: 'btn btn-xs btn-info glyphicon glyphicon-eye-open' %>
+                      <%= link_to ' Show', device, class: 'btn btn-xs btn-info glyphicon glyphicon-eye-open' %>
 
-                      <%= link_to 'Edit', edit_device_path(device), class: 'btn btn-xs btn-warning glyphicon glyphicon-pencil' %>
+                      <%= link_to ' Edit', edit_device_path(device), class: 'btn btn-xs btn-warning glyphicon glyphicon-pencil' %>
                     
-                      <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger glyphicon glyphicon-trash' %>
+                      <%= link_to ' Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger glyphicon glyphicon-trash' %>
                   </div>
                 </td>
               </tr>

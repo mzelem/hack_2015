@@ -1,4 +1,4 @@
-<p id="notice" class="alert alert-success"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <h1>Listing Guests</h1>
 
@@ -26,6 +26,8 @@
             <% @guests.each do |guest| %>
               <tr>
                 <td><%= guest.name %></td>
+                <td><%= guest.phone %></td>
+                <td><%= guest.token %></td>
                 <td><%= guest.check_in %></td>
                 <td><%= guest.checkout %></td>
                 <td><%= guest.bluetooth_id %></td>
@@ -37,11 +39,11 @@
                 <td>
                   <div class="btn-group">
 
-                      <%= link_to 'Show', guest, class: 'btn btn-xs btn-info glyphicon glyphicon-eye-open' %>
+                      <%= link_to ' Show', guest, class: 'btn btn-xs btn-info glyphicon glyphicon-eye-open' %>
 
-                      <%= link_to 'Edit', edit_guest_path(guest), class: 'btn btn-xs btn-warning glyphicon glyphicon-pencil' %>
+                      <%= link_to ' Edit', edit_guest_path(guest), class: 'btn btn-xs btn-warning glyphicon glyphicon-pencil' %>
                     
-                      <%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger glyphicon glyphicon-trash' %>
+                      <%= link_to ' Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger glyphicon glyphicon-trash' %>
                   </div>
                 </td>
               </tr>

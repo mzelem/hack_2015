@@ -1,39 +1,50 @@
-<p id="notice"><%= notice %></p>
+<p id="notice alert alert-info"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @guest.name %>
-</p>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.name %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phone:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.phone %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Token:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.token %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Check in:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.check_in %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Check out:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.checkout %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Bluetooth:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.bluetooth_id %></p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Preferred Language:</label>
+    <div class="col-sm-10">
+      <p class="form-control-static"><%= @guest.preferred_language %></p>
+    </div>
+  </div>
+</form>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @guest.phone %>
-</p>
 
-<p>
-  <strong>Token:</strong>
-  <%= @guest.token %>
-</p>
-
-<p>
-  <strong>Check in:</strong>
-  <%= @guest.check_in %>
-</p>
-
-<p>
-  <strong>Checkout:</strong>
-  <%= @guest.checkout %>
-</p>
-
-<p>
-  <strong>Bluetooth:</strong>
-  <%= @guest.bluetooth_id %>
-</p>
-
-<p>
-  <strong>Preferred language:</strong>
-  <%= @guest.preferred_language %>
-</p>
-
-<%= link_to 'Edit', edit_guest_path(@guest) %> |
-<%= link_to 'Back', guests_path, class: 'pull-left' %>
+<%= link_to ' Edit', edit_guests_path(@guest), class: 'pull-right btn btn-warning glyphicon glyphicon-pencil' %>
+<%= link_to ' Back', guests_path, class: 'pull-left btn btn-default glyphicon glyphicon-arrow-left' %>
