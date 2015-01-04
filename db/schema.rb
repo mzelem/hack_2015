@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104055712) do
+ActiveRecord::Schema.define(version: 20150104163017) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20150104055712) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "pics", force: :cascade do |t|
+    t.integer  "device_id"
+    t.text     "base_64"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pics", ["device_id"], name: "index_pics_on_device_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "login"

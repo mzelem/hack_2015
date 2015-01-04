@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_id: 
+  base_64: MyText
+
+two:
+  device_id: 
+  base_64: MyText

@@ -47,16 +47,35 @@ class DevicesController < ApplicationController
     content = '-1'
     c = 0
 
+    device_action = params[:device_action]
     while content.to_s == '-1' do
-      resp = @device.perform_action(params[:device_action])
+      resp = @device.perform_action(device_action)
       content = JSON.parse(resp.body)["content"]
       c += 1
       content = '1' if c == 2
     end
 
     if content.to_s != '-1'
-      @device.status = params[:device_action]
+      
+      @device.status = device_action
       @device.save
+
+      if device_action == 'unlock'
+        @camera_device = @device.user.devices.where(device_type: 'camera').first
+
+        img = @camera_device.get_snapshot
+
+        pic = @camera_device.pics.create(base_64: @camera_device)
+
+        #fqdn = 'https://api.att.com'
+
+        token = Att::Codekit::Auth::OAuthToken.new(session["credentials"]["token"], session["credentials"]["expires_at"], session["credentials"]["refresh_token"])
+
+        message = Message.new(to: '3035137428', body: "Your guest has checked in: http://#{request.host_with_port}/pics/#{pic.id}")
+
+        message.send_message(token)
+      end
+
       render action: :show
     else
       render status: 422, json: {}

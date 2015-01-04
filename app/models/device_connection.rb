@@ -8,7 +8,6 @@ class DeviceConnection
 
   def initialize(user)
     self.user = user
-    get_auth_token
   end
 
   def auth_token
