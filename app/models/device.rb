@@ -1,7 +1,5 @@
 class Device < ActiveRecord::Base
 
-  attr_accessor :status
-
   ACTION_MAP = { "door-lock" => :lock, 'smart-plug' => :switch }
 
   def self.all_with_status
@@ -80,6 +78,7 @@ class Device < ActiveRecord::Base
     end
 
     def perform_action(action,device)
+      @resp_json = nil
       att_connection.post do |req|
         req.url "/penguin/api/#{self.gateway_id}/devices/#{get_device_guid(device)}/#{ACTION_MAP[device.device_type].to_s}"
         req.headers['Content-Type'] = 'application/json'
