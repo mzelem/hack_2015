@@ -1,0 +1,131 @@
+TODO: 
+
+============
+HTTP Headers
+============
+1 - Obtain Auth Token
+URL: https://systest.digitallife.att.com/penguin/api/authtokens
+PARAMS: 
+	userId=553474442
+	password=NO-PASSWD
+	domain=DL
+	appKey=OE_43908046736E006C_1
+
+TYPE: POST
+EXAMPLE: https://systest.digitallife.att.com:443/penguin/api/authtokens?userId=553474442&password=NO-PASSWD&domain=DL&appKey=OE_43908046736E006C_1
+RESPONSE:
+{
+  "status": "0",
+  "content": {
+    "authToken": "efafd349676e84b73ab38db19f1de3834ad61c604f03419b930a8b2761f1ffa46d4290d98a23caaf3daf88954936bb2f89d72cbff2965c216042e60b19",
+    "requestToken": "8df10effd7a046b951be907a2ef57ff1",
+    "timetoLive": 172800,
+    "gateways": [
+      {
+        "id": "B5F48A6B48524B6299B4107447902362",
+        "name": "DLC 4",
+        "timezone": "EST5EDT",
+        "capabilities": {
+          "G": "16",
+          "DTM": "1",
+          "IIWC": "1",
+          "RD": "1",
+          "HP": "2",
+          "N": "1",
+          "SP": "1",
+          "K": "16",
+          "VE": "1",
+          "T": "1",
+          "AQS": "1",
+          "ER": "3",
+          "R": "128",
+          "TMH": "1",
+          "AM": "2"
+        },
+        "dlFlags": "23",
+        "softwareVersion": "1.0.22.00/31429",
+        "firmwareVersion": "Cisco: 1.04.93, FW: 1.04.93, JVM: Oracle Corporation 1.7.0_51-ea, OS: Linux 2.6.33.5",
+        "address": {
+          "address1": "West PeachtreeStreet",
+          "city": "Atlanta",
+          "state": "GA",
+          "zip": "30308",
+          "country": "USA",
+          "weatherLocationCacheKey": "AtlantaGAUSA"
+        }
+      }
+    ],
+    "contact": {
+      "id": 7567,
+      "firstName": "TSANNHUI",
+      "lastName": "CHU",
+      "relation": null,
+      "order": 0,
+      "gender": null,
+      "contactInfos": [
+        {
+          "id": 7567,
+          "uuid": 0,
+          "value": "tc0370@att.com",
+          "type": "EMAIL",
+          "xType": "EMAIL",
+          "useForTextMsg": false,
+          "primary": false
+        },
+        {
+          "id": 7567,
+          "uuid": 0,
+          "value": "4044997203",
+          "type": "PHONE_HOME",
+          "xType": "PHONE",
+          "useForTextMsg": false,
+          "primary": true
+        }
+      ]
+    },
+    "permissions": [
+      "EDIT_SELF_ACCOUNT",
+      "VIEW_FULL_ACCOUNT",
+      "VIEW_PROFILE",
+      "EDIT_OTHER_CUSTOM_ACCOUNTS",
+      "MANAGE_ALARM_PANEL",
+      "EDIT_MASTER_ACCOUNT",
+      "VIEW_CUSTOM_ACCOUNT",
+      "VIEW_SETTINGS",
+      "DELETE_OTHER_FULL_ACCOUNTS",
+      "CREATE_CUSTOM_ACCOUNT",
+      "VIEW_ACCOUNT_SUMMARY",
+      "VIEW_MASTER_ACCOUNT",
+      "DEVICE_DISCOVERY",
+      "CREATE_FULL_ACCOUNT",
+      "DELETE_OTHER_GUEST_ACCOUNTS",
+      "VIEW_GUEST_ACCOUNT",
+      "EDIT_OTHER_GUEST_ACCOUNTS",
+      "EDIT_OTHER_FULL_ACCOUNTS",
+      "CREATE_GUEST_ACCOUNT",
+      "VIEW_MESSAGE_LOG",
+      "MANAGE_EMERGENCY_CONTACTS",
+      "VIEW_PERMITS_AND_DOCUMENTS",
+      "MANAGE_PROGRAMS",
+      "DELETE_OTHER_CUSTOM_ACCOUNTS",
+      "VIEW_BILLINGS_AND_PAYMENT"
+    ],
+    "master": true,
+    "uuid": 7553
+  }
+}
+
+*** Save off content.authToken
+*** Save off content.requestToken
+*** Save off content.gateways[0].id
+
+
+2 - Set HTTP Headers and request all devices
+HEADERS:
+	Appkey:OE_43908046736E006C_1
+	Authtoken:efafd349676e84b73ab38db19f1de3834ad61c604f03419b930a8b2761f1ffa46d4290d98a23caaf3daf88954936bb2f89d72cbff2965c216042e60b19
+	Requesttoken:8df10effd7a046b951be907a2ef57ff1
+
+URL: /api/{gatewayGUID}/devices
+TYPE: GET
+EXAMPLE: https://systest.digitallife.att.com:443/penguin/api/B5F48A6B48524B6299B4107447902362/devices
