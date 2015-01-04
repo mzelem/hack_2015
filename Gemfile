@@ -29,6 +29,7 @@ gem 'pry'
 gem 'pry-nav'
 gem 'less-rails-bootstrap'
 gem 'mysql2'
+gem 'devise'
 
 gem 'faraday'
 

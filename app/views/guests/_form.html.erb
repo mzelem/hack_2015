@@ -1,6 +1,6 @@
-<%= form_for(@guest) do |f| %>
+<%= form_for(@guest, :html => { :class => "form-horizontal"} ) do |f| %>
   <% if @guest.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
 
       <ul>
@@ -11,27 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :check_in %><br>
-    <%= f.datetime_select :check_in %>
-  </div>
-  <div class="field">
-    <%= f.label :checkout %><br>
-    <%= f.datetime_select :checkout %>
-  </div>
-  <div class="field">
-    <%= f.label :preferred_language %><br>
-    <%= f.select :preferred_language, options_for_select([[:english, :en],[:spanish, :es]]) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone, 'Phone Number', class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :check_in, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.datetime_select :check_in, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :checkout, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.datetime_select :checkout, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :preferred_language, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.select :preferred_language, options_for_select([[:english, :en],[:spanish, :es]]), class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      </div>
+    </div>
+
 <% end %>
