@@ -1,5 +1,5 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:show, :edit, :action, :update, :destroy]
 
   # GET /devices
   # GET /devices.json
@@ -15,8 +15,8 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def action
-    if @device.perform_action(params[:action])
-      render status: 204
+    if @device.perform_action(params[:device_action])
+      render action: :show
     else
       render status: 422
     end
