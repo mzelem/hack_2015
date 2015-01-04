@@ -4,12 +4,13 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    @devices = Device.all_with_status
   end
 
   # GET /devices/1
   # GET /devices/1.json
   def show
+    @device.get_status
   end
 
   # GET /devices/1
