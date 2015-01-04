@@ -1,4 +1,7 @@
+require 'att/codekit'
+
 class DevicesController < ApplicationController
+  include Att::Codekit
   before_action :set_device, only: [:show, :edit, :action, :update, :destroy]
 
   # GET /devices
@@ -19,7 +22,23 @@ class DevicesController < ApplicationController
   # GET /devices/1.json
   def show
     img = @device.get_snapshot
-    send_data Base64.decode64(img), type: 'image/jpg', disposition: 'inline'
+
+    File.open('/tmp/image.jpg', 'wb') do|f|
+      f.write(Base64.decode64(img))
+    end
+
+    fqdn = 'https://api.att.com'
+
+    clientcred = Auth::ClientCred.new(fqdn,
+                                      'hw3jjqqx24o16vkwi3ljza6hpuwykgyj',
+                                      'vycosunsgooofdjy4d01cpynupvcitbo')
+
+    token = clientcred.createToken('MMS')
+
+    mms = Service::MMSService.new(fqdn, token)
+    response = mms.sendMms('3035137428', "Your guest has arrived", '/tmp/image.jpg')
+
+    send_data File.open('/tmp/image.jpg', 'r').read, type: 'image/jpg', disposition: 'inline'
   end
 
   # GET /devices/1
@@ -33,7 +52,7 @@ class DevicesController < ApplicationController
       content = JSON.parse(resp.body)["content"]
       puts content.to_s + '<==========================================='
       c += 1
-      content = -1 if c == 10
+      content = -1 if c == 20
     end
 
     if content.to_s == '-1'
