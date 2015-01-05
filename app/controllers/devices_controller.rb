@@ -67,6 +67,10 @@ class DevicesController < ApplicationController
 
         pic = @camera_device.pics.create(base_64: img)
 
+        @garage_device = @device.user.devices.where(device_type: 'garage-door-controller').first
+
+        @garage_device.perform_action('open')
+
         #fqdn = 'https://api.att.com'
 
         token = Att::Codekit::Auth::OAuthToken.new(session["credentials"]["token"], session["credentials"]["expires_at"], session["credentials"]["refresh_token"])
