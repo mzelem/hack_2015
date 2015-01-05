@@ -17,6 +17,10 @@ class Device < ActiveRecord::Base
     device_connection.perform_action(action, self)
   end
 
+  def garage_operation(action)
+    device_connection.garage_operation(action, self)
+  end
+
   def get_snapshot
     resp = device_connection.get_snapshot(self)
     JSON.parse(resp.body)['content']['encodedImage']

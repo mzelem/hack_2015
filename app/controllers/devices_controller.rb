@@ -49,7 +49,11 @@ class DevicesController < ApplicationController
 
     device_action = params[:device_action]
     while content.to_s == '-1' do
-      resp = @device.perform_action(device_action)
+      resp = if @device.device_type == 'garage-door-controller'
+        @device.garage_operation(device_action)
+      else
+        @device.perform_action(device_action)
+      end
       content = JSON.parse(resp.body)["content"]
       c += 1
       content = '1' if c == 2
@@ -69,7 +73,7 @@ class DevicesController < ApplicationController
 
         @garage_device = @device.user.devices.where(device_type: 'garage-door-controller').first
 
-        @garage_device.perform_action('open')
+        @garage_device.garage_operation('open')
 
         #fqdn = 'https://api.att.com'
 

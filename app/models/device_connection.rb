@@ -73,6 +73,26 @@ class DeviceConnection
     resp
   end
 
+  def garage_operation(action,device)
+    resp = perform_action(action,device)
+
+    while(garage_state(action,device) == 'busy')
+      sleep(2)
+      resp = perform_action(action,device)
+    end
+
+    resp
+  end
+
+  def garage_state(action,device)
+    @resp_json = nil
+    resp = att_connection.get do |req|
+      req.url "/penguin/api/#{self.gateway_id}/devices/#{get_device_guid(device)}/garage-door-command-result"
+      req.headers['Content-Type'] = 'application/json'
+    end
+    JSON.parse(resp.body)["content"]["value"]
+  end
+
   def get_snapshot(device)
     @resp_json = nil
     att_connection.get do |req|

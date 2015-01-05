@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
       name = if d['deviceType'] == 'door-lock'
         'Front Door'
       elsif d['deviceType'] == 'garage-door-controller'
-         'Switch'
-      elsif d['deviceType'] == 'smart-plug'
          'Garage Door'
+      elsif d['deviceType'] == 'smart-plug'
+         'Light Switch'
       else
         'Camera'
       end
