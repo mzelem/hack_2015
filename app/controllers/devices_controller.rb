@@ -75,7 +75,8 @@ class DevicesController < ApplicationController
 
         token = Att::Codekit::Auth::OAuthToken.new(session["credentials"]["token"], session["credentials"]["expires_at"], session["credentials"]["refresh_token"])
 
-        message = Message.new(to: '3035137428', body: "Your guest has checked in: http://#{request.host_with_port}/pics/#{pic.id}")
+        host_phone = '2102881286' #'3035137428'
+        message = Message.new(to: host_phone, body: "Your guest has checked in: http://#{request.host_with_port}/pics/#{pic.id}")
 
         message.send_message(token)
       end
