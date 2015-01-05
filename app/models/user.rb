@@ -19,13 +19,15 @@ class User < ActiveRecord::Base
   end
 
   def load_devices
-    devices_json = device_connection.get_devices['content'].select{|h| !!(h['deviceType'] =~ /door-lock|smart-plug|camera/) }
+    devices_json = device_connection.get_devices['content'].select{|h| !!(h['deviceType'] =~ /door-lock|smart-plug|camera|garage-door-controller/) }
 
     devices_json.each do |d|
       name = if d['deviceType'] == 'door-lock'
         'Front Door'
+      elsif d['deviceType'] == 'garage-door-controller'
+         'Switch'
       elsif d['deviceType'] == 'smart-plug'
-        'Switch'
+         'Garage Door'
       else
         'Camera'
       end
