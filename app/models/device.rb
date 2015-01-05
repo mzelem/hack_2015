@@ -3,7 +3,7 @@ class Device < ActiveRecord::Base
   belongs_to :user
   has_many :pics
 
-  ACTION_MAP = { "door-lock" => :lock, 'smart-plug' => :switch }
+  ACTION_MAP = { "door-lock" => :lock, 'smart-plug' => :switch, 'garage-door-controller' => 'garage-door-control' }
 
   def self.all_with_status
 
