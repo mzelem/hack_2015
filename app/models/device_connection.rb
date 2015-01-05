@@ -1,7 +1,7 @@
 class DeviceConnection
   USER_ID = '553474442'
   PASSWORD = 'NO-PASSWD'
-  APP_KEY = 'OE_43908046736E006C_1'
+  APP_KEY = 'DE_154EB6D6BB79A8D8_1'
   BASE_URL = 'https://systest.digitallife.att.com:443'
 
   attr_accessor :user, :status
