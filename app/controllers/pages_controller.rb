@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   respond_to :html
 
   def index
+    @nav  = true
   end
 
   def show
